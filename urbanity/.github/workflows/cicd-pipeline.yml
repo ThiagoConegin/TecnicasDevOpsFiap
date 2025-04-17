@@ -1,0 +1,37 @@
+name: CI/CD Urbanity
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Java e Maven
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Compilar e testar o projeto
+        run: |
+          mvn clean install
+
+  deploy-staging:
+    needs: build  # Executa depois do build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy no ambiente Staging
+        run: echo "Deploy de Staging realizado!"
+
+  deploy-prod:
+    needs: deploy-staging  # Executa depois do deploy-staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy no ambiente Produção
+        run: echo "Deploy em Produção realizado!"
