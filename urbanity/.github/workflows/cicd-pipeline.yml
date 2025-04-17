@@ -19,10 +19,10 @@ jobs:
           java-version: '17'
 
       - name: Compilar o projeto
-        run: mvn clean package
+        run: cd TecnicasDevOpsFiap
 
       - name: Construir imagem Docker
-        run: docker build -t urbanity .
+        run: mvn clean package .
 
   deploy-staging:
     needs: build
