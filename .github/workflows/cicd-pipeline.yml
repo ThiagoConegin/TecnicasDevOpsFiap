@@ -37,7 +37,7 @@ jobs:
           docker compose version
 
       - name: Verificar diretórios
-        run: ls
+        run: ls -l urbanity
 
       - name: Deploy no ambiente Staging
         run: cd urbanity && docker compose -f docker-compose.yml up -d
