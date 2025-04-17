@@ -37,8 +37,7 @@ jobs:
           docker compose version
 
       - name: Verificar diretórios
-        working-directory: pwa
-        run: ls -l ../urbanity
+        run: ls -a
 
       - name: Deploy no ambiente Staging
         working-directory: urbanity
