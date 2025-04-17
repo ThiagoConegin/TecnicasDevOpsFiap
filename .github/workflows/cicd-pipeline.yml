@@ -60,6 +60,18 @@ jobs:
         working-directory: urbanity
         run: ls -l target
 
+      - name: Checkout do código
+        uses: actions/checkout@v3
+        with:
+          path: .
+
+      # - name: Compilar o projeto
+      #   working-directory: urbanity
+      #   run: mvn clean package
+
+
+        # 
+
       - name: Deploy no ambiente Staging
         working-directory: urbanity
         run: docker compose -f docker-compose.yml up -d
