@@ -22,6 +22,14 @@ jobs:
         working-directory: urbanity
         run: mvn clean package
 
+      - name: Executar testes automatizados
+        working-directory: urbanity
+        run: mvn test
+
+      - name: Construir a imagem Docker
+        run: docker build -t urbanity-app .
+
+
   deploy-staging:
     needs: build
     runs-on: ubuntu-latest
