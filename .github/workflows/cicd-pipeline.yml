@@ -27,6 +27,7 @@ jobs:
         run: mvn test
 
       - name: Construir a imagem Docker
+        working-directory: urbanity
         run: docker build -t urbanity-app .
 
 
