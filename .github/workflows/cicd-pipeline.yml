@@ -39,6 +39,11 @@ jobs:
       - name: Verificar diretórios
         run: ls -a
 
+      - name: Checkout do código
+        uses: actions/checkout@v3
+        with:
+          path: .
+
       - name: Deploy no ambiente Staging
         working-directory: urbanity
         run: docker compose -f docker-compose.yml up -d
