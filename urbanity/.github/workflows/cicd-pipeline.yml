@@ -26,15 +26,32 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Instalar Docker Compose
-        run: sudo apt-get update && sudo apt-get install docker-compose -y
+      - name: Instalar Docker e Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker-compose -y
+
+      - name: Verificar Docker e Docker Compose
+        run: |
+          docker --version
+          docker compose version
 
       - name: Deploy no ambiente Staging
-        run: docker-compose -f docker-compose.staging.yml up -d
+        run: docker compose -f docker-compose.staging.yml up -d
 
   deploy-prod:
     needs: deploy-staging
     runs-on: ubuntu-latest
     steps:
+      - name: Instalar Docker e Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker-compose -y
+
+      - name: Verificar Docker e Docker Compose
+        run: |
+          docker --version
+          docker compose version
+
       - name: Deploy no ambiente Produção
-        run: docker-compose -f docker-compose.prod.yml up -d
+        run: docker compose -f docker-compose.prod.yml up -d
