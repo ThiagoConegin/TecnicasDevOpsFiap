@@ -36,11 +36,9 @@ jobs:
           docker --version
           docker compose version
 
-      - name: Mostrar diretório atual
-        run: pwd
-
-      - name: Checkout do código
-        uses: actions/checkout@v3
+      - name: Verificar diretórios
+        working-directory: pwa
+        run: ls -l ../urbanity
 
       - name: Deploy no ambiente Staging
         working-directory: urbanity
