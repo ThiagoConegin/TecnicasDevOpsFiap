@@ -65,12 +65,9 @@ jobs:
         with:
           path: .
 
-      # - name: Compilar o projeto
-      #   working-directory: urbanity
-      #   run: mvn clean package
-
-
-        # 
+      - name: Compilar o projeto
+        working-directory: urbanity
+        run: mvn clean package
 
       - name: Deploy no ambiente Staging
         working-directory: urbanity
