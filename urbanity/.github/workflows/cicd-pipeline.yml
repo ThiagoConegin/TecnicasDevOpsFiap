@@ -18,11 +18,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Compilar o projeto
-        run: cd TecnicasDevOpsFiap
-
       - name: Construir imagem Docker
-        run: mvn clean package .
+        run: mvn clean package
 
   deploy-staging:
     needs: build
