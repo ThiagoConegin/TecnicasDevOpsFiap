@@ -70,6 +70,19 @@ jobs:
           docker --version
           docker compose version
 
-      - name: Deploy no ambiente Produção
+      - name: Checkout do código
+        uses: actions/checkout@v3
+        with:
+          path: .
+
+      - name: Compilar o projeto
         working-directory: urbanity
-        run: cd urbanity && docker compose -f docker-compose.yml up -d
+        run: mvn clean package
+
+      - name: Verificar saída do build
+        working-directory: urbanity
+        run: ls -l target
+
+      - name: Deploy no ambiente Staging
+        working-directory: urbanity
+        run: docker compose -f docker-compose.yml up -d
