@@ -40,7 +40,8 @@ jobs:
         run: ls -l urbanity
 
       - name: Deploy no ambiente Staging
-        run: cd urbanity && docker compose -f docker-compose.yml up -d
+        working-directory: urbanity
+        run: docker compose -f docker-compose.yml up -d
 
   deploy-prod:
     needs: deploy-staging
