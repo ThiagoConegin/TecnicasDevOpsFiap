@@ -1,0 +1,7 @@
+version: "3"
+services:
+  urbanity-app:
+    image: urbanity
+    build: .
+    ports:
+      - "8080:8080"
