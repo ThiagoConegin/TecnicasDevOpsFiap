@@ -71,4 +71,5 @@ jobs:
           docker compose version
 
       - name: Deploy no ambiente Produção
+        working-directory: urbanity
         run: cd urbanity && docker compose -f docker-compose.yml up -d
