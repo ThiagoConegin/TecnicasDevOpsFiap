@@ -37,7 +37,7 @@ jobs:
           docker compose version
 
       - name: Deploy no ambiente Staging
-        run: docker compose -f docker-compose.staging.yml up -d
+        run: docker compose -f docker-compose.yml up -d
 
   deploy-prod:
     needs: deploy-staging
@@ -54,4 +54,4 @@ jobs:
           docker compose version
 
       - name: Deploy no ambiente Produção
-        run: docker compose -f docker-compose.prod.yml up -d
+        run: docker compose -f docker-compose.yml up -d
