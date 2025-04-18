@@ -25,4 +25,10 @@ public class DenunciaController {
     public ResponseEntity<List<Denuncia>> getDenuncias() {
         return ResponseEntity.ok(denunciaService.getAll());
     }
+
+    @GetMapping("local")
+    public String getDenunciasString() {
+        return "ResponseEntity.ok(denunciaService.getAll() tweste standing";
+    }
+
 }
