@@ -101,6 +101,13 @@ jobs:
         working-directory: urbanity
         run: ls -l target
 
+      - name: Construir e verificar imagem Docker
+        working-directory: urbanity
+        run: |
+          docker build -t urbanity-prod .
+          docker images
+
+
       - name: Deploy no ambiente Staging
         working-directory: urbanity
-        run: docker compose -f docker-compose.yml up -d
+        run: docker compose -f docker-compose.prod.yml up -d

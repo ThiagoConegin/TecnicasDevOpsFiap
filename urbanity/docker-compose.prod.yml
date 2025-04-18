@@ -1,0 +1,10 @@
+version: "3"
+services:
+  urbanity-prod:
+    image: urbanity
+    build: .
+    container_name: urbanity_production
+    ports:
+      - "8082:8080"
+    environment:
+      - ENV=production
