@@ -28,7 +28,7 @@ public class DenunciaController {
 
     @GetMapping("local")
     public String getDenunciasString() {
-        return "ResponseEntity.ok(denunciaService.getAll() tweste standing";
+        return " tweste standing";
     }
 
 }
