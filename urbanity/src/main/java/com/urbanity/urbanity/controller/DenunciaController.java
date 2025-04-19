@@ -28,7 +28,7 @@ public class DenunciaController {
 
     @GetMapping("local")
     public String getDenunciasString() {
-        return " tweste standing";
+        return "Staging";
     }
 
 }
