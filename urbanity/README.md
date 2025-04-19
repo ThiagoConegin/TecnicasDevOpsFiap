@@ -29,6 +29,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 ### **Instruções para Staging**
 1. Clone o repositório:
    git clone https://github.com/seu-repositorio/urbanity.git
+   
    cd urbanity
 
 2. Compile o projeto com Maven:
