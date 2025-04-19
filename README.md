@@ -30,15 +30,15 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 1. Clone o repositório:
    git clone https://github.com/seu-repositorio/urbanity.git
    
-   cd urbanity
+2. cd urbanity
 
-2. Compile o projeto com Maven:
+3. Compile o projeto com Maven:
    mvn clean package
 
-3. Suba o container Docker no ambiente de staging:
+4. Suba o container Docker no ambiente de staging:
    docker-compose -f docker-compose.yml up -d
 
-4. Acesse o ambiente de staging:
+5. Acesse o ambiente de staging:
    Endpoint: `http://localhost:8081/denuncias/local`
 
 ### **Instruções para Produção**
