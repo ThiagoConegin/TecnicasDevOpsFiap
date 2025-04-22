@@ -1,7 +1,7 @@
 # Projeto Urbanity
 
 # Descrição
-O Urbanity Project é uma aplicação containerizada que utiliza CI/CD para automação de integração e deployment em dois ambientes distintos:
+Urbanity é uma aplicação containerizada que utiliza CI/CD para automação de integração e deployment em dois ambientes distintos:
 
 1. Staging: Ambiente de validação e testes.
 
@@ -28,7 +28,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 ### **Instruções para Staging**
 1. Clone o repositório:
-   git clone https://github.com/seu-repositorio/urbanity.git
+   git clone https://github.com/ThiagoConegin/TecnicasDevOpsFiap.git
    
    cd urbanity
 
