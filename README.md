@@ -1,7 +1,7 @@
 # Projeto Urbanity
 
 # Descrição
-O Urbanity Project é uma aplicação containerizada que utiliza CI/CD para automação de integração e deployment em dois ambientes distintos:
+Urbanity é uma aplicação containerizada que utiliza CI/CD para automação de integração e deployment em dois ambientes distintos:
 
 1. Staging: Ambiente de validação e testes.
 
@@ -28,17 +28,17 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 ### **Instruções para Staging**
 1. Clone o repositório:
-   git clone https://github.com/seu-repositorio/urbanity.git
+   git clone https://github.com/ThiagoConegin/TecnicasDevOpsFiap.git
    
-2. cd urbanity
+   cd urbanity
 
-3. Compile o projeto com Maven:
+2. Compile o projeto com Maven:
    mvn clean package
 
-4. Suba o container Docker no ambiente de staging:
+3. Suba o container Docker no ambiente de staging:
    docker-compose -f docker-compose.yml up -d
 
-5. Acesse o ambiente de staging:
+4. Acesse o ambiente de staging:
    Endpoint: `http://localhost:8081/denuncias/local`
 
 ### **Instruções para Produção**
