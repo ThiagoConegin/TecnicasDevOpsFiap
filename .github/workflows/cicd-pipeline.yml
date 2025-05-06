@@ -22,11 +22,13 @@ jobs:
         working-directory: urbanity
         run: mvn clean package -DskipTests
 
-      - name: Iniciar aplicação Spring Boot
+      - name: Construir a imagem Docker
         working-directory: urbanity
-        run: |
-          nohup java -jar target/urbanity.jar > app.log 2>&1 &
-          sleep 15
+        run: docker build -t urbanity-app .
+
+      - name: Iniciar container
+        working-directory: urbanity
+        run: docker run -d -p 8080:8080 urbanity-app
 
       - name: Executar testes automatizados
         working-directory: urbanity
