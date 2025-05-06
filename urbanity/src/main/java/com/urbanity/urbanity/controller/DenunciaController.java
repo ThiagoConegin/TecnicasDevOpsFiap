@@ -15,8 +15,22 @@ public class DenunciaController {
     @Autowired
     private DenunciaService denunciaService;
 
+    // @PostMapping
+    // public ResponseEntity<String> registrarDenuncia(@RequestBody Map<String,
+    // String> body) {
+    // denunciaService.registrarDenuncia(body.get("descricao"),
+    // body.get("localizacao"));
+    // return ResponseEntity.ok("Denúncia registrada!");
+    // }
+
     @PostMapping
     public ResponseEntity<String> registrarDenuncia(@RequestBody Map<String, String> body) {
+        // Verifica se os campos obrigatórios estão presentes e não estão vazios
+        if (body.get("descricao") == null || body.get("descricao").trim().isEmpty() ||
+                body.get("localizacao") == null || body.get("localizacao").trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("Erro 400: Descrição e Localização são obrigatórias.");
+        }
+
         denunciaService.registrarDenuncia(body.get("descricao"), body.get("localizacao"));
         return ResponseEntity.ok("Denúncia registrada!");
     }

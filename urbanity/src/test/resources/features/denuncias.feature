@@ -5,7 +5,7 @@ Feature: Registro de Denúncias
     When Usuário envia a descrição e a localização
     Then Sistema retorna sucesso
 
-  Scenario: Usuário tenta registrar uma denúncia sem fornecer descrição
+  Scenario: Erro: Usuário tenta registrar uma denúncia sem fornecer descrição
     Given Usuário quer registrar uma denúncia
     When ele envia apenas a localização
     Then o sistema deve retornar um erro
