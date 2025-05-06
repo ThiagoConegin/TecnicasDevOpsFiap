@@ -30,6 +30,17 @@ jobs:
         working-directory: urbanity
         run: docker run -d -p 8080:8080 urbanity-app
 
+      - name: Aguardar inicialização da aplicação
+        working-directory: urbanity
+        run: |
+          sleep 15  # Tempo estimado para startup
+          for i in {1..30}; do
+            if curl -s http://localhost:8080/health; then
+              break
+            fi
+            sleep 2
+          done
+
       - name: Executar testes automatizados
         working-directory: urbanity
         run: mvn test
