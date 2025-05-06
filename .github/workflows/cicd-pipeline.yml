@@ -25,7 +25,7 @@ jobs:
       - name: Iniciar aplicação Spring Boot
         working-directory: urbanity
         run: |
-          java -jar target/urbanity.jar &
+          nohup java -jar target/urbanity.jar > app.log 2>&1 &
           sleep 15
 
       - name: Executar testes automatizados
