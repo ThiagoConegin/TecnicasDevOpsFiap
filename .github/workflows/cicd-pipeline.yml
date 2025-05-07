@@ -27,6 +27,7 @@ jobs:
     needs: build
     steps:
       - name: Verificar estrutura de diretórios
+        working-directory: urbanity
         run: ls
 
       - name: Verificar existência do .jar
