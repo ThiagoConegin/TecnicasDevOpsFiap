@@ -51,7 +51,7 @@ public class DenunciaControllerTest {
 
     @Test
     @Order(3)
-    @DisplayName("Verificar endpoint de status")
+    @DisplayName("Verificar status de endpoint")
     public void testEndpointLocal() {
         given()
         .when()
