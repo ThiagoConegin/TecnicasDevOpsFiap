@@ -26,6 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Verificar existência do .jar
+        working-directory: urbanity
+        run: ls target/
+
       - name: Iniciar aplicação localmente
         working-directory: urbanity
         run: |
