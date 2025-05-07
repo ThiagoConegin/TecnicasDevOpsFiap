@@ -20,94 +20,25 @@ jobs:
 
       - name: Compilar o projeto
         working-directory: urbanity
-        run: mvn clean package
+        run: mvn clean package -DskipTests
+
+      - name: Iniciar aplicação localmente
+        working-directory: urbanity
+        run: |
+          nohup java -jar target/urbanity-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
+          sleep 10  # Aguarda a inicialização da aplicação
+
+      - name: Verificar se a aplicação está rodando
+        working-directory: urbanity
+        run: |
+          for i in {1..20}; do
+            if curl -s http://localhost:8080/denuncias; then
+              echo "✅ Aplicação rodando!"
+              break
+            fi
+            sleep 2
+          done || echo "❌ A API não respondeu dentro do tempo esperado."
 
       - name: Executar testes automatizados
         working-directory: urbanity
         run: mvn test
-
-      - name: Construir a imagem Docker
-        working-directory: urbanity
-        run: docker build -t urbanity-app .
-
-
-  deploy-staging:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Instalar Docker e Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install docker-compose -y
-
-      - name: Verificar Docker e Docker Compose
-        run: |
-          docker --version
-          docker compose version
-
-      - name: Verificar diretórios
-        run: ls -a
-
-      - name: Checkout do código
-        uses: actions/checkout@v3
-        with:
-          path: .
-
-      - name: Compilar o projeto
-        working-directory: urbanity
-        run: mvn clean package
-
-      - name: Verificar saída do build
-        working-directory: urbanity
-        run: ls -l target
-
-      - name: Checkout do código
-        uses: actions/checkout@v3
-        with:
-          path: .
-
-      - name: Compilar o projeto
-        working-directory: urbanity
-        run: mvn clean package
-
-      - name: Deploy no ambiente Staging
-        working-directory: urbanity
-        run: docker compose -f docker-compose.yml up -d
-
-  deploy-prod:
-    needs: deploy-staging
-    runs-on: ubuntu-latest
-    steps:
-      - name: Instalar Docker e Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install docker-compose -y
-
-      - name: Verificar Docker e Docker Compose
-        run: |
-          docker --version
-          docker compose version
-
-      - name: Checkout do código
-        uses: actions/checkout@v3
-        with:
-          path: .
-
-      - name: Compilar o projeto
-        working-directory: urbanity
-        run: mvn clean package
-
-      - name: Verificar saída do build
-        working-directory: urbanity
-        run: ls -l target
-
-      - name: Construir e verificar imagem Docker
-        working-directory: urbanity
-        run: |
-          docker build -t urbanity-prod .
-          docker images
-
-
-      - name: Deploy no ambiente Staging
-        working-directory: urbanity
-        run: docker compose -f docker-compose.prod.yml up -d
