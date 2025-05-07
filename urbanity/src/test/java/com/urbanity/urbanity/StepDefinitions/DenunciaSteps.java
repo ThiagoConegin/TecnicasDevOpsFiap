@@ -33,7 +33,7 @@ public class DenunciaSteps {
         Assert.assertEquals(200, response.getStatusCode());
     }
 
-    // Teste de usuario tentando registrar uma denuncia incompleta.
+    // Usuario tentando registrar uma denuncia incompleta.
     @Dado("Usuário quer registrar uma denúncia")
     public void usuarioQuerRegistrarDenuncia() {
         denuncia = new HashMap<>();
@@ -56,7 +56,7 @@ public class DenunciaSteps {
     // Teste para obter registros.
     @Dado("que há registros de denúncias no sistema")
     public void sistemaTemDenuncias() {
-        // Supondo que já existam denúncias registradas na API
+        // 
     }
 
     @Quando("o usuário faz uma requisição para buscar denúncias")

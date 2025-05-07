@@ -22,6 +22,10 @@ jobs:
         working-directory: urbanity
         run: mvn clean package -DskipTests
 
+  start-app:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Iniciar aplicação localmente
         working-directory: urbanity
         run: |
@@ -33,12 +37,20 @@ jobs:
         run: |
           for i in {1..30}; do
             if curl -s http://localhost:8080/denuncias; then
-              echo "Aplicação rodando!"
+              echo "✅ Aplicação rodando!"
               break
             fi
             sleep 2
           done
 
+  test:
+    runs-on: ubuntu-latest
+    needs: start-app
+    steps:
       - name: Executar testes automatizados
         working-directory: urbanity
         run: mvn test
+
+      - name: Exibir logs da aplicação
+        working-directory: urbanity
+        run: cat app.log
