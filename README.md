@@ -25,6 +25,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 ### **Instruções para rodar**
 ### 1. Clone o repositório:
    **Comando:** git clone https://github.com/ThiagoConegin/TecnicasDevOpsFiap.git
+   
    **Comando:** cd urbanity
 
 ### 2. Compilar o projeto (sem rodar testes) com Maven:
