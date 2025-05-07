@@ -53,4 +53,4 @@ jobs:
 
       - name: Exibir logs da aplicação
         working-directory: urbanity
-        run: cat app.log
+        run: cat app.log 
