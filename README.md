@@ -1,7 +1,7 @@
 # Projeto Urbanity
 
 # Descrição
-Urbanity é uma aplicação containerizada que utiliza CI/CD para automação de testes:
+Urbanity é uma aplicação que utiliza CI/CD para automação de testes:
 
 
 ## Tecnologias Utilizadas
