@@ -27,14 +27,14 @@ jobs:
     needs: build
     steps:
       - name: Verificar estrutura de diretórios
-        run: ls -R /home/runner/work/TecnicasDevOpsFiap/TecnicasDevOpsFiap/
+        run: ls -R /home/runner/work/TecnicasDevOpsFiap/
 
-      - name: Acessar o diretório correto e verificar existência do .jar
-        working-directory: /home/runner/work/TecnicasDevOpsFiap/TecnicasDevOpsFiap/urbanity
+      - name: Verificar existência do .jar
+        working-directory: urbanity
         run: ls target/ || echo "⚠️ O arquivo .jar não foi encontrado!"
 
       - name: Iniciar aplicação localmente
-        working-directory: /home/runner/work/TecnicasDevOpsFiap/TecnicasDevOpsFiap/urbanity
+        working-directory: TecnicasDevOpsFiap/urbanity
         run: |
           if [ -f target/urbanity-0.0.1-SNAPSHOT.jar ]; then
             nohup java -jar target/urbanity-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
@@ -45,11 +45,11 @@ jobs:
           fi
 
       - name: Exibir logs da aplicação
-        working-directory: /home/runner/work/TecnicasDevOpsFiap/TecnicasDevOpsFiap/urbanity
+        working-directory: urbanity
         run: cat app.log || echo "⚠️ Nenhum log encontrado. A aplicação pode não ter iniciado corretamente."
 
       - name: Verificar se a aplicação está rodando
-        working-directory: /home/runner/work/TecnicasDevOpsFiap/TecnicasDevOpsFiap/urbanity
+        working-directory: urbanity
         run: |
           for i in {1..30}; do
             if curl -s http://localhost:8080/denuncias; then
