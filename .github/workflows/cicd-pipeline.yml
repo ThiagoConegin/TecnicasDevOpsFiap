@@ -27,8 +27,7 @@ jobs:
     needs: build
     steps:
       - name: Verificar estrutura de diretórios
-        working-directory: /home/runner/work/TecnicasDevOpsFiap/TecnicasDevOpsFiap/urbanity
-        run: ls
+        run: ls -R /home/runner/work/TecnicasDevOpsFiap/TecnicasDevOpsFiap/
 
       - name: Verificar existência do .jar
         working-directory: urbanity
